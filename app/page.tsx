@@ -44,12 +44,12 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/components">
-          <button className="bg-[#00d9ff] text-[#0a1628] px-8 py-3 rounded-lg font-semibold hover:bg-[#00c4ea] transition-colors">
+          <button className="bg-[#00d9ff] text-[#0a1628] w-full md:w-60 px-8 py-3 rounded-lg font-semibold hover:bg-[#00c4ea] transition-colors">
             Get Started
           </button>
           </Link>
           <Link href="/components">
-          <button className="bg-transparent border-2 border-[#2a3f5f] text-white px-8 py-3 rounded-lg font-semibold hover:border-[#3a4f6f] transition-colors flex items-center justify-center gap-2">
+          <button className="bg-transparent border-2 w-full md:w-60 border-[#2a3f5f] text-white px-8 py-3 rounded-lg font-semibold hover:border-[#3a4f6f] transition-colors flex items-center justify-center gap-2">
             <Upload className="w-5 h-5" />
             Upload Video
           </button>
