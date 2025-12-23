@@ -18,7 +18,7 @@ export default function Sidebar({ currentView, setCurrentView, role }: SidebarPr
     <aside className="hidden md:flex flex-col w-64 bg-white border-r border-slate-200 z-20">
       <div className="p-6 flex items-center gap-3 text-blue-600">
         <FaBolt className="text-2xl" />
-        <span className="text-xl font-bold tracking-tight">SportAI</span>
+        <span className="text-xl font-bold tracking-tight">CoachCam</span>
       </div>
 
       <nav className="flex-1 px-4 py-4 space-y-1">
