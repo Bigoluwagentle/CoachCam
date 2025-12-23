@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Upload, BarChart3, TrendingUp, Check } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -17,10 +18,12 @@ export default function Home() {
         <div className="hidden md:flex items-center gap-8">
           <a href="#" className="text-gray-300 hover:text-[#00d9ff] transition-colors">Features</a>
           <a href="#" className="text-gray-300 hover:text-[#00d9ff] transition-colors">About</a>
-          <a href="#" className="text-gray-300 hover:text-[#00d9ff] transition-colors">Login</a>
-          <button className="bg-[#00d9ff] text-[#0a1628] px-6 py-2 rounded-lg font-semibold hover:bg-[#00c4ea] cursor-pointer transition-colors">
-            Sign Up
-          </button>
+          <Link href="/components" className="text-gray-300 hover:text-[#00d9ff] transition-colors>">Login</Link>
+          <Link href="/components">
+            <button className="bg-[#00d9ff] text-[#0a1628] px-6 py-2 rounded-lg font-semibold hover:bg-[#00c4ea] cursor-pointer transition-colors">
+              Sign Up
+            </button>
+          </Link>
         </div>
       </nav>
 
@@ -40,13 +43,17 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/components">
           <button className="bg-[#00d9ff] text-[#0a1628] px-8 py-3 rounded-lg font-semibold hover:bg-[#00c4ea] transition-colors">
             Get Started
           </button>
+          </Link>
+          <Link href="/components">
           <button className="bg-transparent border-2 border-[#2a3f5f] text-white px-8 py-3 rounded-lg font-semibold hover:border-[#3a4f6f] transition-colors flex items-center justify-center gap-2">
             <Upload className="w-5 h-5" />
             Upload Video
           </button>
+          </Link>
         </div>
       </section>
 

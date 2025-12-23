@@ -27,7 +27,7 @@ export default function Home() {
       
       {['dashboard', 'upload', 'processing', 'results', 'history', 'profile', 'athletes'].includes(currentView) && (
         <MainLayout 
-          currentView={currentView} 
+          currentView={currentView}
           setCurrentView={setCurrentView}
           role={role}
         />
