@@ -1,13 +1,16 @@
+
 "use client"
 
 import { useState } from 'react'
-import { Upload, BarChart3, TrendingUp, Check } from 'lucide-react'
+import { Upload, BarChart3, TrendingUp, Check, Menu, X } from 'lucide-react' // Added Menu and X
 import Link from 'next/link'
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false) // State for mobile menu
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1628] via-[#0d1b2a] to-[#1b263b]">
-      <nav className="flex items-center justify-between px-6 py-4 lg:px-16">
+      <nav className="flex items-center justify-between px-6 py-4 lg:px-16 relative z-50">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-gradient-to-br from-[#00d9ff] to-[#00ff88] rounded-lg flex items-center justify-center">
             <BarChart3 className="w-5 h-5 text-[#0a1628]" />
@@ -15,18 +18,44 @@ export default function Home() {
           <span className="text-white font-semibold text-xl">CoachCam</span>
         </div>
         
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-white p-2 focus:outline-none"
+          >
+            {isMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+          </button>
+        </div>
+
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <a href="#" className="text-gray-300 hover:text-[#00d9ff] transition-colors">Features</a>
           <a href="#" className="text-gray-300 hover:text-[#00d9ff] transition-colors">About</a>
-          <Link href="/components" className="text-gray-300 hover:text-[#00d9ff] transition-colors>">Login</Link>
+          <Link href="/components" className="text-gray-300 hover:text-[#00d9ff] transition-colors">Login</Link>
           <Link href="/components">
             <button className="bg-[#00d9ff] text-[#0a1628] px-6 py-2 rounded-lg font-semibold hover:bg-[#00c4ea] cursor-pointer transition-colors">
               Sign Up
             </button>
           </Link>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-[#0d1b2a] border-b border-[#2a3f5f] p-6 flex flex-col gap-6 md:hidden animate-in slide-in-from-top duration-300 shadow-2xl">
+            <a href="#" onClick={() => setIsMenuOpen(false)} className="text-gray-300 text-lg">Features</a>
+            <a href="#" onClick={() => setIsMenuOpen(false)} className="text-gray-300 text-lg">About</a>
+            <Link href="/components" onClick={() => setIsMenuOpen(false)} className="text-gray-300 text-lg">Login</Link>
+            <Link href="/components" onClick={() => setIsMenuOpen(false)}>
+              <button className="bg-[#00d9ff] text-[#0a1628] w-full py-3 rounded-lg font-semibold">
+                Sign Up
+              </button>
+            </Link>
+          </div>
+        )}
       </nav>
 
+      {/* Hero Section */}
       <section className="px-6 py-20 lg:px-16 text-center max-w-6xl mx-auto">
         <div className="inline-flex items-center gap-2 bg-[#1a2942] border border-[#2a3f5f] rounded-full px-4 py-2 mb-8">
           <div className="w-2 h-2 bg-[#00ff88] rounded-full"></div>
