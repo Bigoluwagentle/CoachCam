@@ -7,6 +7,7 @@ import Chart from 'chart.js/auto'
 import Log from "@/public/image.jpg"
 
 type View = 'dashboard' | 'upload' | 'processing' | 'results' | 'history' | 'profile' | 'athletes'
+// import { View } from '@/app/page'
 
 interface DashboardViewProps {
   role: 'athlete' | 'coach' | 'team'

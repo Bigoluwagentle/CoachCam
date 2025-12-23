@@ -5,7 +5,7 @@ import LoginView from '@/app/components/views/LoginView'
 import OnboardingView from '@/app/components/views/OnboardingView'
 import MainLayout from '@/app/components/layouts/MainLayout'
 
-type View = 'login' | 'onboarding' | 'dashboard' | 'upload' | 'processing' | 'results' | 'history' | 'profile' | 'athletes'
+export type View = 'login' | 'onboarding' | 'dashboard' | 'upload' | 'processing' | 'results' | 'history' | 'profile' | 'athletes'
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<View>('login')
@@ -27,8 +27,8 @@ export default function Home() {
       
       {['dashboard', 'upload', 'processing', 'results', 'history', 'profile', 'athletes'].includes(currentView) && (
         <MainLayout 
-          currentView={currentView}
-          setCurrentView={setCurrentView}
+          currentView={currentView as any}
+          setCurrentView={setCurrentView as any}
           role={role}
         />
       )}
