@@ -16,7 +16,7 @@ export default function LoginView({ onSuccess }: LoginViewProps) {
         <div className="mb-8">
           <div className="flex items-center gap-2 text-blue-600 mb-6">
             <FaBolt className="text-3xl" />
-            <span className="text-2xl font-bold tracking-tight">SportAI</span>
+            <span className="text-2xl font-bold tracking-tight">CoachCam</span>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-2">Welcome back</h1>
           <p className="text-slate-500">Enter your details to access your performance analytics.</p>
