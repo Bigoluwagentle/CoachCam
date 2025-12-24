@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode } from 'react'
+import { useState } from 'react' // 1. Added useState
 import Sidebar from '@/app/components/navigation/Sidebar'
 import MobileNav from '@/app/components/navigation/MobileNav'
 import Header from '@/app/components/navigation/Header'
@@ -21,6 +21,9 @@ interface MainLayoutProps {
 }
 
 export default function MainLayout({ currentView, setCurrentView, role }: MainLayoutProps) {
+  // 2. Add this state to store the Firebase Document ID
+  const [analysisId, setAnalysisId] = useState<string>('')
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar currentView={currentView} setCurrentView={setCurrentView} role={role} />
@@ -30,12 +33,33 @@ export default function MainLayout({ currentView, setCurrentView, role }: MainLa
         <Header />
         
         {currentView === 'dashboard' && <DashboardView role={role} setCurrentView={setCurrentView} />}
-        {currentView === 'upload' && <UploadView setCurrentView={setCurrentView} />}
-        {currentView === 'processing' && <ProcessingView setCurrentView={setCurrentView} />}
-        {currentView === 'results' && <ResultsView setCurrentView={setCurrentView} />}
+        
+        {/* 3. Pass setAnalysisId to the UploadView */}
+        {currentView === 'upload' && (
+          <UploadView 
+            setCurrentView={setCurrentView} 
+            setAnalysisId={setAnalysisId} 
+          />
+        )}
+        
+        {/* 4. Pass the actual analysisId to the ProcessingView */}
+        {currentView === 'processing' && (
+          <ProcessingView 
+            analysisId={analysisId} 
+            setCurrentView={setCurrentView} 
+          />
+        )}
+
+        {currentView === 'results' && (
+          <ResultsView 
+            analysisId={analysisId} 
+            setCurrentView={setCurrentView} 
+          />
+        )}
+
         {currentView === 'history' && <HistoryView setCurrentView={setCurrentView} />}
-        {currentView === 'profile' && <ProfileView />}
-        {currentView === 'athletes' && <AthletesView />}
+        <ProfileView />
+        <AthletesView />
       </main>
     </div>
   )
